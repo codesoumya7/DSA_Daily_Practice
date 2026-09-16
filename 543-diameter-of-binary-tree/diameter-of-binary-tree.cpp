@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+int maxi = 0;
     int diameterOfBinaryTree(TreeNode* root) {
         /*int ans = 0;
         maxDepth(root, ans);
@@ -27,20 +28,22 @@ public:
         ans = max(ans, lh + rh);
 
         return 1 + max(lh, rh);*/
-
-   
+        
         if(root == NULL)
             return 0;
 
         int lh = maxDepth(root->left);
         int rh = maxDepth(root->right);
 
-        int maxi = lh + rh;
+        
+        maxi=max(maxi,lh+rh);
 
-        int leftDiameter = diameterOfBinaryTree(root->left);
-        int rightDiameter = diameterOfBinaryTree(root->right);
 
-        return max(maxi, max(leftDiameter, rightDiameter));
+        diameterOfBinaryTree(root->left);
+        diameterOfBinaryTree(root->right);
+        return maxi;
+
+        
     }
     int maxDepth(TreeNode* root) {
         TreeNode* node=root;
