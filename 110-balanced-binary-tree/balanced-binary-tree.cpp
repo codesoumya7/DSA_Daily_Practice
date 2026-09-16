@@ -15,8 +15,8 @@ public:
         if(root==NULL){
             return true;
         }
-        int right=maxDepth(root->right)+1;
-        int left=maxDepth(root->left)+1;
+        int right=maxDepth(root->right);
+        int left=maxDepth(root->left);
         if(abs(left - right) > 1) return false;
         return isBalanced(root->left) && isBalanced(root->right);
         
