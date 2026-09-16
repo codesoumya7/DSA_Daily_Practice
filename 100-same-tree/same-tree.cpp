@@ -12,8 +12,8 @@
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        vector<int> pi=preorderTraversal(p);
-        vector<int> qi=preorderTraversal(q);
+        vector<string> pi=preorderTraversal(p);
+        vector<string> qi=preorderTraversal(q);
         if(pi==qi){
             return true;
         }
@@ -21,20 +21,20 @@ public:
 
         
     }
-    vector<int> preorderTraversal(TreeNode* root) {
-        vector<int> vec;
+    vector<string> preorderTraversal(TreeNode* root) {
+        vector<string> vec;
         preorder(root,vec);
         return vec;
         
     }
 
-    void preorder(TreeNode* root, vector<int>& vec){
+    void preorder(TreeNode* root, vector<string>& vec){
         if(root==NULL){
-            vec.push_back('NULL');
+            vec.push_back("NULL");
             return ;
         }
 
-        vec.push_back(root->val);
+        vec.push_back(to_string(root->val));
         preorder(root->left,vec);
         preorder(root->right,vec);
 
